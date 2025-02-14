@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Convertor</title>
+    <link rel="stylesheet" href="./assets/css/bootstrap.css">
+    <link rel="stylesheet" href="./assets/css/style2.css">
+</head>
+
+<body>
+
+    <section id="convertor">
+        <div class="container vh-100">
+            <div class="bg-primary text-white p-4">
+                <h1 class="my-4 text-center mb-5">Number System Convertor</h1>
+                <span class="">Convert From : </span>
+
+                <select name="" class="ms-3" id="convert-from">
+                    <option value="2">Binary</option>
+                    <option value="8">Octal</option>
+                    <option value="10">Decimal</option>
+                    <option value="16">HexaDecimal</option>
+                </select>
+
+                <br />
+
+                <span class="d-inline-block mt-3">Convert To : </span>
+
+                <select name="" class="ms-4" id="convert-to">
+                    <option value="2">Binary</option>
+                    <option value="8">Octal</option>
+                    <option value="10">Decimal</option>
+                    <option value="16">HexaDecimal</option>
+                </select>
+
+                <div class="mt-4" id="ans-1">
+                    <span>Converted from : </span>
+                    <input type="text" id="value1" required>
+                </div>
+                <div class="mt-4" id="ans-2">
+                    <span>Converted to : </span>
+                    <input type="text" id="value2" required>
+                </div>
+
+                <div class="mt-5 text-center">
+                    <button class="btn btn-warning" id="convert-btn">Convert</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="./assets/js/jquery.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+
+        let i1 = document.getElementById("convert-from");
+        let i2 = document.getElementById("convert-to");
+        let num1 = document.getElementById("value1")
+        let num2 = document.getElementById("value2")
+        let answer;
+
+        $(document).ready(() => {
+
+            $("#convert-btn").on("click", () => {
+
+                if (num1.value.trim() == "") {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Can't be empty",
+                        text: "Something went wrong!",
+                    });
+                }
+
+                switch (Number(i1.value)) {
+                    case 2: {
+                        answer = parseInt(num1.value, 2)
+                        break;
+                    }
+                    case 8: {
+                        answer = parseInt(num1.value, 8)
+                        break;
+                    }
+                    case 10: {
+                        answer = parseInt(num1.value, 10)
+                        break;
+                    }
+                    case 16: {
+                        answer = parseInt(num1.value, 16)
+                        break;
+                    }
+                }
+
+                switch (Number(i2.value)) {
+                    case 2: {
+                        num2.value = answer.toString(2)
+                        break;
+                    }
+                    case 8: {
+                        num2.value = answer.toString(8)
+                        break;
+                    }
+                    case 10: {
+                        num2.value = answer.toString(10)
+                        break;
+                    }
+                    case 16: {
+                        num2.value = answer.toString(16)
+                        break;
+                    }
+                }
+
+            })
+
+
+        })
+
+    </script>
+
+</body>
+
+</html>
